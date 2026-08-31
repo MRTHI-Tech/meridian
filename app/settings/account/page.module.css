@@ -1,0 +1,160 @@
+/* Settings — account. */
+
+.page {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: var(--spacing-7) var(--spacing-4);
+  background: var(--color-surface-muted);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: var(--spacing-5);
+  width: 100%;
+  /* 13 x 48px — the 624px column every settings page is laid out on. */
+  max-width: calc(var(--spacing-7) * 13);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+  text-wrap: balance;
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-base);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-700);
+}
+
+.hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-base);
+  color: var(--color-ink-900);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  color: var(--color-ink-500);
+}
+
+.input:focus-visible,
+.select:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 1px;
+  border-color: var(--color-brand-600);
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  /* The native control is dropped so the select matches the text inputs; the
+     chevron below replaces the one that goes with it. */
+  appearance: none;
+  padding-right: var(--spacing-6);
+  cursor: pointer;
+}
+
+.selectWrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-4);
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-right: 2px solid var(--color-ink-500);
+  border-bottom: 2px solid var(--color-ink-500);
+  /* A square turned onto its corner reads as a chevron; -75% seats the
+     resulting diamond on the text's centre line rather than below it. */
+  rotate: 45deg;
+  translate: 0 -75%;
+  pointer-events: none;
+}
+
+.button {
+  align-self: start;
+  padding: var(--spacing-3) var(--spacing-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-600);
+  color: var(--color-surface-base);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-brand-700);
+  }
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .card {
+    padding: var(--spacing-5);
+  }
+
+  .button {
+    align-self: stretch;
+  }
+}

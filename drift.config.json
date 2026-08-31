@@ -6,7 +6,11 @@
     "/onboarding/workspace",
     "/onboarding/team",
     "/onboarding/plan",
-    "/onboarding/done"
+    "/onboarding/done",
+    "/settings/account",
+    "/settings/billing",
+    "/settings/notifications",
+    "/settings/security"
   ],
   "viewports": [
     "mobile",

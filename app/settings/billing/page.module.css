@@ -1,0 +1,271 @@
+/* Settings — billing. */
+
+.page {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: var(--spacing-7) var(--spacing-4);
+  background: var(--color-surface-muted);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: var(--spacing-5);
+  width: 100%;
+  /* 13 x 48px — the 624px column every settings page is laid out on. */
+  max-width: calc(var(--spacing-7) * 13);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+  text-wrap: balance;
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-base);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-700);
+}
+
+.hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+/*
+ * Billing's inputs are underlined rather than boxed. The card on file and the
+ * plan summary already draw their own rules, and a boxed field between them
+ * turned the card into a stack of competing containers.
+ */
+.input {
+  width: 100%;
+  padding: var(--spacing-2) 0;
+  border: none;
+  border-bottom: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-none);
+  background: transparent;
+  color: var(--color-ink-900);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  color: var(--color-ink-500);
+}
+
+.input:focus-visible {
+  /* A boxed outline would put back the box the underline exists to avoid, so
+     focus doubles the rule instead: the shadow lays a second pixel under the
+     border, which thickens and colours it without shifting the text. */
+  outline: none;
+  border-bottom-color: var(--color-brand-600);
+  box-shadow: 0 1px 0 0 var(--color-brand-600);
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+}
+
+.paymentDetail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.paymentCard {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-900);
+}
+
+.paymentHolder {
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-500);
+}
+
+.paymentButton {
+  flex: none;
+  padding: var(--spacing-2) var(--spacing-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.paymentButton:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
+
+/* The two ends of the variant map in `page.tsx`. */
+.paymentQuiet {
+  border-color: #5145CD;
+  background: #5145CD;
+  color: var(--color-surface-base);
+}
+
+.paymentUrgent {
+  background: var(--color-critical);
+  color: var(--color-surface-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .paymentQuiet:hover {
+    background: var(--color-brand-700);
+  }
+
+  .paymentUrgent:hover {
+    /* No darker critical in the scale, so the fill dims against the row. */
+    opacity: 0.9;
+  }
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+}
+
+.planTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.planName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-ink-900);
+}
+
+.status {
+  flex: none;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusActive {
+  background: var(--color-surface-sunken);
+  color: var(--color-positive);
+}
+
+.statusLapsed {
+  background: var(--color-surface-sunken);
+  color: var(--color-critical);
+}
+
+.planPrice {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-900);
+}
+
+.planCadence {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-ink-500);
+}
+
+.planSeats {
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-500);
+}
+
+.button {
+  align-self: start;
+  padding: var(--spacing-3) var(--spacing-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-600);
+  color: var(--color-surface-base);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-brand-700);
+  }
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .card {
+    padding: var(--spacing-5);
+  }
+
+  .payment {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    align-self: stretch;
+  }
+}
