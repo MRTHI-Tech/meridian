@@ -15,7 +15,7 @@ substitutions:
   _IMAGE: meridian-preview
   _SERVICE: meridian-preview
   _DRIFT_TOPIC: drift-deploys
-  _WATCHED_REPO: TMoreMaker/meridian
+  _WATCHED_REPO: MRTHI-Tech/meridian
 
 steps:
   - name: gcr.io/cloud-builders/docker
