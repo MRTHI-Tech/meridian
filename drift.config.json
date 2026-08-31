@@ -1,0 +1,7 @@
+{
+  "routes": ["/", "/invite/accept"],
+  "viewports": ["mobile", "desktop"],
+  "authCookieName": null,
+  "seedData": false,
+  "tokenDefinitionsPath": "theme.ts"
+}
