@@ -1,0 +1,67 @@
+# Builds Meridian, deploys it to Cloud Run, and tells Drift it redeployed.
+#
+#   gcloud builds submit --config cloudbuild.yaml .
+#
+# Cloud Build rather than a local `docker build`: the image has to be
+# linux/amd64 and an Apple silicon laptop builds arm64 by default, which Cloud
+# Run rejects at deploy time with a message that does not say so.
+#
+# The last step is what makes a deploy a Drift run. `repo` is the only field the
+# push endpoint requires, and it is how Drift finds which project redeployed.
+
+substitutions:
+  _REGION: africa-south1
+  _REPOSITORY: drift
+  _IMAGE: meridian-preview
+  _SERVICE: meridian-preview
+  _DRIFT_TOPIC: drift-deploys
+  _WATCHED_REPO: TMoreMaker/meridian
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id: build
+    args:
+      - build
+      - --tag=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE}:${BUILD_ID}
+      - --tag=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE}:latest
+      - .
+
+  - name: gcr.io/cloud-builders/docker
+    id: push
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE}
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: deploy
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE}:${BUILD_ID}
+      - --region=${_REGION}
+      - --platform=managed
+      - --allow-unauthenticated
+      - --port=8080
+      - --cpu=1
+      - --memory=512Mi
+      - --max-instances=4
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: tell-drift
+    entrypoint: gcloud
+    args:
+      - pubsub
+      - topics
+      - publish
+      - ${_DRIFT_TOPIC}
+      - --message
+      - '{"repo":"${_WATCHED_REPO}"}'
+
+options:
+  machineType: E2_HIGHCPU_8
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1800s
