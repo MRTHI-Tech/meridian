@@ -1,150 +1,135 @@
+/*
+ * Get started screen.
+ *
+ * `--accent` is the one deliberate exception to the token system: a slightly
+ * brighter indigo than --color-brand-600, so the primary action stands out.
+ * It lives here rather than in tokens.css because it is scoped to this button.
+ */
+
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
+  --accent: #4F46E5;
 
   display: flex;
   flex: 1;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  padding: var(--spacing-6) var(--spacing-4);
+  background: var(--color-surface-muted);
 }
 
-.main {
-  display: flex;
-  flex: 1;
+.card {
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  /* 6 x 64px — the widest a single-field form wants to be. */
+  max-width: calc(var(--spacing-8) * 6);
+  padding: var(--spacing-7) var(--spacing-6);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-base);
 }
 
-.intro {
+.heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+  text-wrap: balance;
+}
+
+.supporting {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-6);
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
+.field {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-700);
+}
+
+.input {
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  padding: var(--spacing-3) var(--spacing-3);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-base);
+  color: var(--color-ink-900);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
+.input::placeholder {
+  color: var(--color-ink-500);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.button {
+  padding: var(--spacing-3) var(--spacing-5);
   border: 1px solid transparent;
-  transition: 0.2s;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--color-surface-base);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  transition: background-color 0.15s ease;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .button:hover {
+    background: var(--color-brand-600);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
+.button:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
 
-  .intro {
-    gap: 16px;
-  }
+.signin {
+  margin-top: var(--spacing-5);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-align: center;
+}
 
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+.signinLink {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-600);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .signinLink:hover {
+    color: var(--color-brand-700);
+    text-decoration: underline;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-6) var(--spacing-5);
   }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
-
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
 }

@@ -1,68 +1,40 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function GetStarted() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+      <main className={styles.card}>
+        <h1 className={styles.heading}>Get started with Meridian</h1>
+        <p className={styles.supporting}>
+          Name your workspace to start tracking team expenses in one place.
+        </p>
+
+        <div className={styles.form}>
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="workspace-name">
+              Workspace name
+            </label>
+            <input
+              className={styles.input}
+              id="workspace-name"
+              name="workspace-name"
+              type="text"
+              placeholder="Northwind"
+              autoComplete="organization"
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <button className={styles.button} type="button">
+            Get started
+          </button>
         </div>
+
+        <p className={styles.signin}>
+          Already have an account?{" "}
+          <a className={styles.signinLink} href="/signin">
+            Sign in
+          </a>
+        </p>
       </main>
     </div>
   );
