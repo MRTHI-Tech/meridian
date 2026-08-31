@@ -1,6 +1,15 @@
 {
-  "routes": ["/", "/invite/accept"],
-  "viewports": ["mobile", "desktop"],
+  "routes": [
+    "/",
+    "/invite/accept",
+    "/onboarding/profile",
+    "/onboarding/workspace",
+    "/onboarding/team"
+  ],
+  "viewports": [
+    "mobile",
+    "desktop"
+  ],
   "authCookieName": null,
   "seedData": false,
   "tokenDefinitionsPath": "theme.ts"

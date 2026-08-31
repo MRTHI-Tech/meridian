@@ -36,3 +36,15 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/*
+ * Form controls opt out of the page's type by default: a browser draws a radio,
+ * a checkbox and a select at its own 13.3333px rather than at ours. Nobody
+ * chose that size, so nothing should read as though somebody did.
+ */
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}

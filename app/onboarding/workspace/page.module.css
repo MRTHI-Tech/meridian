@@ -1,0 +1,217 @@
+/* Onboarding — step 2 of 3. */
+
+.page {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6) var(--spacing-4);
+  background: var(--color-surface-muted);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  width: 100%;
+  /* 10 x 48px — the 480px column the flow is laid out on. */
+  max-width: calc(var(--spacing-7) * 10);
+  padding: var(--spacing-6);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-base);
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.indicatorLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.track {
+  display: flex;
+  gap: var(--spacing-1);
+}
+
+.tick {
+  flex: 1;
+  height: var(--spacing-1);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-sunken);
+}
+
+.tickOn {
+  background: var(--color-brand-600);
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+  text-wrap: balance;
+}
+
+.help {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-700);
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-base);
+  color: var(--color-ink-900);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  color: var(--color-ink-500);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 1px;
+  border-color: var(--color-brand-600);
+}
+
+.button {
+  padding: var(--spacing-3) var(--spacing-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-600);
+  color: var(--color-surface-base);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-brand-700);
+  }
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .step {
+    padding: var(--spacing-5);
+  }
+}
+
+.select {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-base);
+  color: var(--color-ink-900);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 1px;
+  border-color: var(--color-brand-600);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  border: none;
+}
+
+.legend {
+  padding: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-700);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-700);
+  cursor: pointer;
+}
+
+.option:has(:focus-visible) {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 1px;
+  border-color: var(--color-brand-600);
+}
+
+.option:has(:checked) {
+  border-color: var(--color-brand-600);
+  background: var(--color-brand-50);
+  color: var(--color-ink-900);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .option:hover {
+    background: var(--color-surface-muted);
+  }
+
+  .option:has(:checked):hover {
+    background: var(--color-brand-50);
+  }
+}
+
+.control {
+  flex: none;
+  margin: 0;
+  accent-color: var(--color-brand-600);
+}
