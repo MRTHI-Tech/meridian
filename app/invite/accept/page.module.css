@@ -1,29 +1,51 @@
-/* Invite acceptance screen. */
+/*
+ * Invite acceptance — the other way into the product.
+ *
+ * Shares the split shell with the get started screen: brand panel, then the
+ * content. Not the centred card an onboarding step uses.
+ */
 
 .page {
   display: flex;
   flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-6) var(--spacing-4);
-  background: var(--color-surface-muted);
 }
 
-.card {
-  width: 100%;
-  /* 6 x 64px — matches the get started card. */
-  max-width: calc(var(--spacing-8) * 6);
-  padding: var(--spacing-7) var(--spacing-6);
-  border: 1px solid var(--color-ink-300);
-  border-radius: var(--radius-lg);
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 40%;
+  padding: var(--spacing-8) var(--spacing-7);
+  background: var(--color-brand-700);
+  color: var(--color-surface-base);
+}
+
+.wordmark {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+}
+
+.pitch {
+  flex: 1;
+  font-size: var(--font-size-base);
+  color: var(--color-brand-100);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-7);
   background: var(--color-surface-base);
-  text-align: center;
 }
 
 .mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: flex-start;
   width: var(--spacing-7);
   height: var(--spacing-7);
   margin-bottom: var(--spacing-5);
@@ -36,19 +58,18 @@
 }
 
 .heading {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--color-ink-900);
-  text-wrap: balance;
 }
 
 .supporting {
-  margin-top: var(--spacing-2);
-  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-3);
+  max-width: 480px;
+  font-size: var(--font-size-base);
   color: var(--color-ink-500);
-  text-wrap: pretty;
 }
 
 .workspace {
@@ -59,20 +80,16 @@
 .actions {
   display: flex;
   gap: var(--spacing-3);
-  margin-top: var(--spacing-6);
+  margin-top: var(--spacing-7);
 }
 
 .button {
-  flex: 1;
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-5);
   border: 1px solid transparent;
   border-radius: var(--radius-md);
-  font-family: inherit;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.5;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .button:focus-visible {
@@ -91,18 +108,22 @@
   color: var(--color-ink-700);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .primary:hover {
-    background: var(--color-brand-700);
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
   }
 
-  .secondary:hover {
-    background: var(--color-surface-sunken);
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
+  .brand {
+    width: 100%;
     padding: var(--spacing-6) var(--spacing-5);
+  }
+
+  .content {
+    padding: var(--spacing-7) var(--spacing-5);
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

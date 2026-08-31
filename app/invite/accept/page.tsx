@@ -3,7 +3,15 @@ import styles from "./page.module.css";
 export default function AcceptInvite() {
   return (
     <div className={styles.page}>
-      <main className={styles.card}>
+      <aside className={styles.brand}>
+        <div className={styles.wordmark}>Meridian</div>
+        <p className={styles.pitch}>
+          Expense tracking for small teams. Submit, approve and reimburse in one
+          place.
+        </p>
+      </aside>
+
+      <main className={styles.content}>
         <div className={styles.mark} aria-hidden="true">
           N
         </div>

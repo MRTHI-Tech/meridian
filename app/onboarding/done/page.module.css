@@ -1,0 +1,87 @@
+/* Onboarding — the last screen. Block layout throughout, no flex container. */
+
+.page {
+  /* Centres the card without auto margins, which resolve to arbitrary pixels. */
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  background: var(--color-surface-muted);
+}
+
+.card {
+  width: 100%;
+  /* 6 x 64px — matches the get started and invite cards. */
+  max-width: calc(var(--spacing-8) * 6);
+  height: fit-content;
+  padding: var(--spacing-7) var(--spacing-6);
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-base);
+  text-align: center;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-7);
+  height: var(--spacing-7);
+  margin-bottom: var(--spacing-5);
+  border-radius: var(--radius-full);
+  background: var(--color-brand-50);
+  color: var(--color-brand-600);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  /* Centres the tick without a flex container. */
+  line-height: var(--spacing-7);
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+  text-wrap: balance;
+}
+
+.supporting {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-500);
+  text-wrap: pretty;
+}
+
+.button {
+  display: inline-block;
+  margin-top: var(--spacing-5);
+  padding: var(--spacing-3) var(--spacing-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-600);
+  color: var(--color-surface-base);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-brand-700);
+  }
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-6) var(--spacing-5);
+  }
+}

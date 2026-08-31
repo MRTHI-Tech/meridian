@@ -3,7 +3,21 @@ import styles from "./page.module.css";
 export default function GetStarted() {
   return (
     <div className={styles.page}>
-      <main className={styles.card}>
+      <aside className={styles.brand}>
+        <div className={styles.wordmark}>Meridian</div>
+        <p className={styles.pitch}>
+          Expense tracking for small teams. Submit, approve and reimburse in one
+          place.
+        </p>
+        <p className={styles.account}>
+          Already have an account?{" "}
+          <a className={styles.accountLink} href="/signin">
+            Sign in
+          </a>
+        </p>
+      </aside>
+
+      <main className={styles.content}>
         <h1 className={styles.heading}>Get started with Meridian</h1>
         <p className={styles.supporting}>
           Name your workspace to start tracking team expenses in one place.
@@ -28,13 +42,6 @@ export default function GetStarted() {
             Get started
           </button>
         </div>
-
-        <p className={styles.signin}>
-          Already have an account?{" "}
-          <a className={styles.signinLink} href="/signin">
-            Sign in
-          </a>
-        </p>
       </main>
     </div>
   );

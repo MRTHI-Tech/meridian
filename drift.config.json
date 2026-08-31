@@ -4,7 +4,9 @@
     "/invite/accept",
     "/onboarding/profile",
     "/onboarding/workspace",
-    "/onboarding/team"
+    "/onboarding/team",
+    "/onboarding/plan",
+    "/onboarding/done"
   ],
   "viewports": [
     "mobile",
