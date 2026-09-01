@@ -83,8 +83,8 @@
 }
 
 .planName {
-  /* Asked for as a raw value: 550 sits between medium (500) and semibold. */
-  font-weight: 550;
+  /* Asked for as a raw value: 500 sits between medium (500) and semibold. */
+  font-weight: 500;
   color: var(--color-ink-900);
 }
 
